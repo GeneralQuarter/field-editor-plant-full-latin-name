@@ -5,6 +5,7 @@
   "dependencies": {
     "@contentful/app-sdk": "^3.36.0",
     "@contentful/field-editor-single-line": "^0.14.1",
+    "@contentful/field-editor-slug": "^0.10.1",
     "@contentful/field-editor-test-utils": "^0.11.1",
     "@contentful/forma-36-fcss": "^0.3.2",
     "@contentful/forma-36-react-components": "^3.90.1",
@@ -24,7 +25,7 @@
   },
   "scripts": {
     "start": "cross-env BROWSER=none react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rimraf docs && ncp build docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -43,5 +44,9 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "."
+  "homepage": ".",
+  "devDependencies": {
+    "ncp": "^2.0.0",
+    "rimraf": "^3.0.2"
+  }
 }
