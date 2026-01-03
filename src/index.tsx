@@ -4,9 +4,9 @@ import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { loadCatalog } from './i18n';
 
-await loadCatalog('en-US');
+// Do not load translations yet as we do not know the UI locale language yet
+i18n.activate('en-US');
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
