@@ -5,7 +5,10 @@ import { i18n } from "@lingui/core";
  * @param locale any locale string
  */
 export async function loadCatalog(locale: string = 'en-US') {
+  if (i18n.locale === locale) {
+    return;
+  }
+
   const { messages } = await import(`./locales/${locale}.po`);
-  console.log(locale, messages);
   i18n.loadAndActivate({ locale, messages });
 }
