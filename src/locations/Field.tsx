@@ -4,6 +4,11 @@ import { useSDK } from '@contentful/react-apps-toolkit';
 import { useCallback, useEffect } from 'react';
 import './Field.css';
 
+export const DuplicateErrorMessage = /*i18n*/ {
+  id: 'FieldEditors.Slug.SlugEditorField.DuplicateSlugError',
+  message: 'This full latin name is already used by another plant card',
+};
+
 const Field = () => {
   const sdk = useSDK<FieldAppSDK>();
   const field = sdk.field;
@@ -54,12 +59,14 @@ const Field = () => {
   }, [speciesField, updateFullLatinName]);
 
   useEffect(() => {
-    const detach = varietyCultivarField.onValueChanged(() => updateFullLatinName());
+    const detach = varietyCultivarField.onValueChanged(() =>
+      updateFullLatinName(),
+    );
     return () => detach();
   }, [varietyCultivarField, updateFullLatinName]);
 
   return (
-    <div className='plant-field-full-latin-name'>
+    <div className="plant-field-full-latin-name">
       <SlugEditor baseSdk={sdk} field={field} isInitiallyDisabled={true} />
     </div>
   );
